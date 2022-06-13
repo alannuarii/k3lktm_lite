@@ -12,7 +12,6 @@ from app.models.ph_proses import PHProses
 from app.models.debit_domestik import DebitDomestik
 from app.models.ph_domestik import PHDomestik
 from app.models.guestbook import Guestbook
-import socket
 import os
 import base64
 from PIL import Image
@@ -25,9 +24,8 @@ import string
 
 @app.route('/')
 def index():
-    hostname = socket.gethostname()
-    ip = str(socket.gethostbyname(hostname))
-    return render_template('pages/home.html', title='Home | K3L KTM', active_home='active', ip = ip)
+    
+    return render_template('pages/home.html', title='Home | K3L KTM', active_home='active')
 
 
 @app.route('/lb3-converter')
