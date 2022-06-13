@@ -1,0 +1,55 @@
+{% extends 'layouts/base.html' %} {% block title %}
+<title>{{ title }}</title>
+{% endblock %} {% block content %}
+<section id="input-ppa" class="input-ppa">
+  <div class="container">
+    <div class="row mt-2">
+      <h1 class="text-center">INPUT DATA HARIAN</h1>
+      <div class="col-8 offset-2">
+        <div class="card position-relative">
+          <form method="post">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Data Input</label>
+              <select class="form-select ppa-select" aria-label="Default select example" name="ppa">
+                <option selected>Open to select item</option>
+                <option value="debitproses">Debit Limbah Proses</option>
+                <option value="phproses">ph Limbah Proses</option>
+                <option value="debitdomestik">Debit Limbah Domestik</option>
+                <option value="phdomestik">ph Limbah Domestik</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Tanggal</label>
+              <input type="date" class="form-control tanggal" id="exampleFormControlInput1" name="tanggal" value="" />
+              <input type="hidden" name="bulan" class="bulan" value="" />
+            </div>
+            <div class="mb-4 data-harian"></div>
+            <div class="text-center">
+              <input type="submit" class="btn" value="Submit" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const dataHarian = document.querySelector(".data-harian");
+    const ppa = document.querySelector(".ppa-select");
+    const bulan = document.querySelector(".bulan");
+    const tanggal = document.querySelector(".tanggal");
+
+    ppa.onchange = function ppaSelect(event) {
+      if (event.target.value === "debitproses" || event.target.value === "debitdomestik") {
+        dataHarian.innerHTML = `<label for="exampleFormControlInput1" class="form-label">Data Harian (Debit)</label>
+            <input type="number" step="any" class="form-control" id="exampleFormControlInput1" name="debit" />`;
+      } else if (event.target.value === "phproses" || event.target.value === "phdomestik") {
+        dataHarian.innerHTML = `<label for="exampleFormControlInput1" class="form-label">Data Harian (ph)</label>
+            <input type="number" step="any" class="form-control" id="exampleFormControlInput1" name="ph" />`;
+      }
+    };
+    tanggal.onchange = function setBulan() {
+      bulan.value = tanggal.value;
+    };
+  </script>
+</section>
+{% endblock %}

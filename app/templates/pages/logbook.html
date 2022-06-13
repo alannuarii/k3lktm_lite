@@ -1,0 +1,47 @@
+{% extends 'layouts/base.html' %} {% block title %}
+<title>{{ title }}</title>
+{% endblock %} {% block content %}
+<section id="logbook" class="logbook text-center">
+  <div class="container">
+    <div class="row mt-2">
+      <h1>PPA</h1>
+      <p>(Pengendalian Pencemaran Air)</p>
+      <div class="col-6">
+        <div class="card">
+          <h3>Limbah Proses</h3>
+          <p>Data harian pengukuran debit dan ph limbah proses di sisi outlet</p>
+          <div>
+            <a href="{{ url_for('debit_proses' ) }}" class="btn">Debit</a>
+            <a href="{{ url_for('ph_proses' ) }}" class="btn">ph</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card">
+          <h3>Limbah Domestik</h3>
+          <p>Data harian pengukuran debit dan ph limbah domestik di sisi outlet</p>
+          <div>
+            <a href="{{ url_for('debit_domestik' ) }}" class="btn">Debit</a>
+            <a href="{{ url_for('ph_domestik' ) }}" class="btn">ph</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <h1>PLB3</h1>
+      <p>(Pengendalian Limbah B3)</p>
+      <div class="col-10 offset-1">
+        <div class="card">
+          <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" onchange="window.location.href=this.value">
+            <option selected>Open this to select item</option>
+            <option value="{{ url_for('oli_bekas' ) }}">Oli Bekas</option>
+            <option value="{{ url_for('filter_bekas' ) }}">Filter Bekas</option>
+            <option value="{{ url_for('majun_bekas' ) }}">Majun Bekas</option>
+            <option value="{{ url_for('sludge' ) }}">Sludge</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

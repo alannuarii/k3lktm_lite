@@ -1,0 +1,126 @@
+{% extends 'layouts/base.html' %} {% block title %}
+<title>{{ title }}</title>
+{% endblock %} {% block content %}
+<section id="limbah" class="limbah text-center position-relative">
+  <div class="container">
+    <div class="row">
+      <h1>Filter Bekas</h1>
+      <p>Kode Limbah: A303-3</p>
+      <div class="col-8 offset-sm-2">
+        <div class="card">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Tanggal</th>
+                <th scope="col">Masuk <br /><span class="fw-normal">(Ton)</span></th>
+                <th scope="col">Keluar <br /><span class="fw-normal">(Ton)</span></th>
+                <th scope="col">Saldo <br /><span class="fw-normal">(Ton)</span></th>
+                <th scope="col">Manifest</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for filter in filter_bekas %} {% if filter.manifest %}
+              <tr>
+                <td>{{loop.index}}</td>
+                <td>{{filter.tanggal}}</td>
+                <td>{{filter.masuk|default('0', True)}}</td>
+                <td>{{filter.keluar|default('0', True)}}</td>
+                <td>0</td>
+                <td><i class="bi-file-earmark-text" data-bs-toggle="modal" data-bs-target="#modal{{filter.id}}"></i></td>
+              </tr>
+              <!-- Modal Manifest-->
+              <div class="modal fade" id="modal{{filter.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Manifest LB3</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <img src="/static/upload/{{filter.manifest}}" class="img-fluid" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Akhir Modal Manifest  -->
+              {% else %}
+              <tr>
+                <td>{{loop.index}}</td>
+                <td>{{filter.tanggal}}</td>
+                <td>{{filter.masuk|default('0', True)}}</td>
+                <td>{{filter.keluar|default('0', True)}}</td>
+                <td>0</td>
+                <td>-</td>
+              </tr>
+              {% endif %} {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div class="in-out">
+          <div class="btn d-block mb-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasIn" aria-controls="offcanvasRight">
+            <i class="bi-arrow-left-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="Input Masuk"></i>
+          </div>
+          <div class="btn d-block mt-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasOut" aria-controls="offcanvasRight">
+            <i class="bi-arrow-right-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="Input Keluar"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Offcanvas Input Masuk -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasIn" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <h3 class="mb-3">Filter Bekas Masuk</h3>
+      <form method="post" class="text-start">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Tanggal Masuk</label>
+          <input type="date" class="form-control" id="exampleFormControlInput1" name="tanggal" />
+        </div>
+        <div class="mb-4">
+          <label for="exampleFormControlInput1" class="form-label">Jumlah Masuk (Ton)</label>
+          <input type="number" step="any" class="form-control" id="exampleFormControlInput1" name="masuk" />
+        </div>
+        <div class="text-center">
+          <input type="submit" class="btn" value="Submit" />
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Akhir Offcanvas -->
+
+  <!-- Offcanvas Input Keluat -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasOut" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <h3 class="mb-3">Filter Bekas Keluar</h3>
+      <form method="post" enctype="multipart/form-data" class="text-start">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Tanggal Keluar</label>
+          <input type="date" class="form-control" id="exampleFormControlInput1" name="tanggal" />
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Jumlah Keluar (Ton)</label>
+          <input type="number" step="any" class="form-control" id="exampleFormControlInput1" name="keluar" />
+        </div>
+        <div class="mb-4">
+          <label for="exampleFormControlInput1" class="form-label">Manifest</label>
+          <input type="file" class="form-control" id="exampleFormControlInput1" name="manifest" />
+        </div>
+        <div class="text-center">
+          <input type="submit" class="btn" value="Submit" />
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Akhir Offcanvas -->
+</section>
+{% endblock %}

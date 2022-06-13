@@ -1,0 +1,29 @@
+<aside id="sidebar">
+  <nav class="nav-menu">
+    <ul class="d-block">
+      <li>
+        <a href="/" class="nav-link {{active_home}}"><i class="bi-house"></i> <span>Home</span></a>
+      </li>
+      <li>
+        <a href="{{ url_for('guestbook' ) }}" class="nav-link {{active_guestbook}}"><i class="bi-book"></i> <span>Guest Book</span></a>
+      </li>
+      <li>
+        <a href="" class="nav-link"><i class="bi-shield-check"></i> <span>Working Permit</span></a>
+      </li>
+      <li>
+        <a href="" class="nav-link"><i class="bi-camera-reels"></i> <span>Safety Induction</span></a>
+      </li>
+      <li>
+        <a href="{{ url_for('logbook' ) }}" class="nav-link {{active_logbook}}"><i class="bi-calendar2-check"></i> <span>LogBook</span></a>
+      </li>
+      <li>
+        <a href="{{ url_for('lb3' ) }}" class="nav-link {{active_lb3}}"><i class="bi-arrow-left-right"></i> <span>LB3 Converter</span></a>
+      </li>
+      <li>
+        <a href="https://pltdktm.daengveloper.com/" class="nav-link" target="_blank"><i class="bi-door-closed"></i> <span>Portal PLTD Kotamobagu</span></a>
+      </li>
+    </ul>
+  </nav>
+  <!-- .nav-menu -->
+</aside>
+<!-- End Header -->

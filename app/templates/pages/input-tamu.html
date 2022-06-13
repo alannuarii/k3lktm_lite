@@ -1,0 +1,81 @@
+{% extends 'layouts/base.html' %} {% block title %}
+<title>{{ title }}</title>
+{% endblock %} {% block content %}
+<section id="input-tamu" class="input-tamu">
+  <div class="container">
+    <div class="row">
+      <h1 class="text-center">GUEST BOOK</h1>
+      <div class="col-lg-10 offset-lg-1">
+        <div class="card">
+          <form action="" method="post">
+            <div class="mb-3">
+              <label class="form-label">Nama Lengkap</label>
+              <input type="text" class="form-control" placeholder="Masukkan nama lengkap" name="nama" required />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Asal Perusahaan / Instansi</label>
+              <input type="text" class="form-control" placeholder="Masukkan asal perusahaan / instansi" name="instansi" required />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Alamat</label>
+              <input type="text" class="form-control" placeholder="Masukkan alamat" name="alamat" required />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Nomor Telepon</label>
+              <input type="text" class="form-control" placeholder="Masukkan nomor telepon" name="telepon" required />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Tujuan Berkunjung</label>
+              <input type="text" class="form-control" placeholder="Masukkan tujuan berkunjung" name="tujuan" required />
+            </div>
+            <div class="mb-3 d-flex flex-column align-items-center mx-auto foto-tamu border border-1">
+              <div id="result"></div>
+              <div id="my_camera"></div>
+              <div class="btn mt-1 capture"><i class="bi-camera"></i></div>
+              <input type="hidden" name="foto" class="foto" value="" required />
+            </div>
+            <div class="text-center tombol-tamu"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="/static/vendor/webcamjs/webcam.js"></script>
+
+  <script>
+    const camera = document.getElementById("my_camera");
+    const capture = document.querySelector(".capture");
+    const foto = document.querySelector(".foto");
+    const result = document.getElementById("result");
+    const tombol = document.querySelector(".tombol-tamu");
+
+    Webcam.set({
+      width: 320,
+      height: 240,
+      dest_width: 640,
+      dest_height: 480,
+      image_format: "jpeg",
+      jpeg_quality: 90,
+      force_flash: false,
+      flip_horiz: true,
+      fps: 45,
+    });
+
+    Webcam.attach(camera);
+
+    capture.addEventListener("click", () => {
+      Webcam.snap(function (data_uri) {
+        foto.value = data_uri;
+        result.innerHTML = '<img src="' + data_uri + '"/>';
+        camera.remove();
+        capture.remove();
+
+        if (foto.value) {
+          tombol.innerHTML = `<input type="submit" class="btn submit" value="Submit" />
+              <input type="button" class="btn reset" value="Reset" onclick="document.location.reload()" />`;
+        }
+      });
+    });
+  </script>
+</section>
+{% endblock %}

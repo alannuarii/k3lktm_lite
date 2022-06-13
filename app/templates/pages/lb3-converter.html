@@ -1,0 +1,83 @@
+{% extends 'layouts/base.html' %} {% block title %}
+<title>{{ title }}</title>
+{% endblock %} {% block content %}
+<section id="lb3" class="lb3">
+  <div class="container">
+    <div class="row">
+      <h1 class="text-center">LIMBAH B3 WEIGHT CONVERTER</h1>
+      <div class="col-12">
+        <div class="card">
+          <form action="">
+            <table class="table table-bordered text-center">
+              <thead>
+                <tr>
+                  <th scope="col">Jenis Limbah B3</th>
+                  <th scope="col">Nilai</th>
+                  <th scope="col">Satuan</th>
+                  <th scope="col">Jumlah<br /><span class="fw-normal">(Input)</span></th>
+                  <th scope="col">Hasil</th>
+                  <th scope="col">Satuan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <select class="form-select lb3-select" aria-label="Default select example">
+                      <option selected>Pilih item</option>
+                      {% for lb3 in list_lb3 %}
+                      <option value="{{ loop.index0 }}">{{ lb3.jenis_limbah }}</option>
+                      {% endfor %}
+                    </select>
+                  </td>
+                  <td><input type="number" class="form-control konstanta" value="" disabled /></td>
+                  <td class="satuan"></td>
+                  <td><input type="number" class="form-control input" value="" /></td>
+                  <td><input type="number" class="form-control hasil" value="" disabled /></td>
+                  <td>Ton</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="text-center">
+              <button type="reset" class="btn">Clear</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const listKonstanta = {{list_nilai_satuan|safe}}
+    const listSatuan = {{satuan|safe}}
+    const input = document.querySelector(".input");
+    const hasil = document.querySelector(".hasil");
+    const konstanta = document.querySelector(".konstanta");
+    const lb3Select = document.querySelector(".lb3-select");
+    const satuan = document.querySelector('.satuan')
+
+    console.log(listSatuan)
+    lb3Select.onchange = function pilihLB3(event) {
+      if(event.target.value){
+        konstanta.value = listKonstanta[event.target.value]
+        satuan.innerHTML = listSatuan[event.target.value]
+      }
+    };
+
+    if(listKonstanta[5] || listKonstanta[6] || listKonstanta[11]){
+      input.onchange = function convert() {
+      hasil.value = input.value * konstanta.value * 0.9 / 1000;
+      console.log(konstanta.value)
+    };
+    } else{
+      input.onchange = function convert() {
+      hasil.value = input.value * konstanta.value / 1000;
+      console.log(konstanta.value)
+    };
+    }
+
+
+    // input.onchange = function convert() {
+    //   hasil.value = input.value * konstanta.value;
+    // };
+  </script>
+</section>
+{% endblock %}

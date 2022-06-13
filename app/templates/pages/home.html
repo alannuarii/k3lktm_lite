@@ -1,0 +1,29 @@
+{% extends 'layouts/base.html' %} {% block title %}
+<title>{{ title }}</title>
+{% endblock %} {% block content %}
+<section id="home" class="home text-center d-flex align-items-center position-relative">
+  <div class="container">
+    <div class="row">
+      <h1>SELAMAT DATANG</h1>
+      <h2>DI ULPLTD KOTAMOBAGU</h2>
+      <h4>Kapasitas 8000 kW</h4>
+      <div class="mt-4">
+        <a href="https://pltdktm.daengveloper.com/" target="_blank" class="btn me-2">Company Profile</a>
+        <a href="https://pltdktm.daengveloper.com/" class="btn ms-2">Safety Induction</a>
+      </div>
+    </div>
+    <div class="position-absolute bottom-0 start-50 translate-middle-x mb-3">
+      <img src="{{ url_for('static', filename='img/logopln.png' ) }}" class="img-fluid logopln me-2" alt="" />
+      <img src="{{ url_for('static', filename='img/hsse.png' ) }}" class="img-fluid hsse ms-2" alt="" />
+    </div>
+    <div class="safety-first">
+      <img src="{{ url_for('static', filename='img/safety-first.png' ) }}" alt="" />
+    </div>
+    <div class="bersih">
+      <h2>B E R S I H</h2>
+      <p>Bangga Efisien Ramah Safety Integritas Handal</p>
+    </div>
+    <div class="ip mt-2"><p>Your IP Address: {{ip}}</p></div>
+  </div>
+</section>
+{% endblock %}
