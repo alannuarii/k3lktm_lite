@@ -1,0 +1,61 @@
+@media screen and (max-width: 992px) {
+  #sidebar,
+  .navbar button {
+    display: none;
+  }
+  .navbar .navbar-brand {
+    margin: 0px auto;
+    font-size: 5vw;
+  }
+}
+
+/* Halaman Mobile Home */
+@media screen and (max-width: 992px) {
+  .m-home h1 {
+    color: var(--color-btn2);
+    font-weight: 700;
+  }
+  .m-home .btn {
+    background-color: var(--color-btn);
+    color: var(--color-text);
+    font-size: 100%;
+    font-weight: 700;
+    border-radius: 30px;
+    padding: 5%;
+    border: none;
+    width: 70vw;
+    margin: 0px auto;
+    margin-top: 2%;
+  }
+  .m-home .logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+  }
+  .m-home .logopln {
+    width: 15vw;
+    display: inline-block;
+  }
+  .m-home .hsse {
+    width: 15vw;
+    display: inline-block;
+  }
+  .m-home .card {
+    margin-top: 5vh;
+    padding: 5% 3%;
+    border-radius: 50px;
+    border-bottom: 10px solid var(--color-btn2);
+  }
+  .m-home .card h2 {
+    color: var(--color-btn);
+    font-weight: 700;
+  }
+  .m-home .card .card {
+    margin: 1% 3%;
+    padding: 5% 2% 2% 2%;
+    border-radius: 30px;
+  }
+  .m-home .card .card p {
+    color: var(--color-text2);
+  }
+}

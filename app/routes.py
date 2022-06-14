@@ -18,14 +18,14 @@ from PIL import Image
 from io import BytesIO
 from werkzeug.utils import secure_filename
 from googletrans import Translator
-import random
-import string  
+import socket
 
 
 @app.route('/')
 def index():
-    
-    return render_template('pages/home.html', title='Home | K3L KTM', active_home='active')
+    hostname = socket.gethostname()
+    ip = str(socket.gethostbyname(hostname))
+    return render_template('pages/home.html', title='Home | K3L KTM', active_home='active', ip = ip)
 
 
 @app.route('/lb3-converter')
@@ -249,14 +249,18 @@ def input_tamu():
         bytes_decoded = base64.b64decode(new_foto)
         img = Image.open(BytesIO(bytes_decoded))
         out_jpg = img.convert("RGB")
-        letters = string.ascii_letters
-        acak =  ''.join(random.choice(letters) for i in range(10))  
-        filename = 'Tamu-'+str(acak)+'.jpg'
+
+        # Random Name 
+        now = datetime.now()
+        microsecond = now.strftime('%f')  
+        filename = 'Tamu-'+microsecond+'.jpg'
+
+
         out_jpg.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         guestbook = Guestbook(nama=nama, instansi=instansi, alamat=alamat, telepon=telepon, tujuan=tujuan, foto=filename)
         db.session.add(guestbook)
         db.session.commit()
-        return redirect(url_for('guestbook'))
+        return redirect(url_for('m_home'))
     return render_template('pages/input-tamu.html',title='Guest Book | K3L KTM', active_guestbook='active')
 
 
@@ -265,3 +269,9 @@ def guestbook():
     list_guestbook = Guestbook.query.all()
     return render_template('pages/guestbook.html',title='Guest Book | K3L KTM', active_guestbook='active', guests=list_guestbook)
 
+
+# Halaman Mobile 
+@app.route('/m-home')
+def m_home():
+    
+    return render_template('pages/m-home.html',title='Home | K3L KTM')

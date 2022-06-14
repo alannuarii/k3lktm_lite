@@ -1,0 +1,64 @@
+{% extends 'layouts/base.html' %} {% block title %}
+<title>{{ title }}</title>
+{% endblock %} {% block content %}
+<section id="m-home" class="m-home text-center position-relative">
+  <!-- <div class="container-fluid">
+    <nav class="m-navbar navbar navbar-expand d-lg-none d-xl-none fixed-bottom">
+      <ul class="navbar-nav nav-justified w-100">
+        <li class="nav-item dropup">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Unit</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Unit 1</a></li>
+            <li><a class="dropdown-item" href="#">Unit 2</a></li>
+            <li><a class="dropdown-item" href="#">Unit 3</a></li>
+            <li><a class="dropdown-item" href="#">Unit 4</a></li>
+            <li><a class="dropdown-item" href="#">Unit 5</a></li>
+            <li><a class="dropdown-item" href="#">Unit 6</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#mesin" class="nav-link">Mesin</a>
+        </li>
+        <li class="nav-item">
+          <a href="#generator" class="nav-link">Generator</a>
+        </li>
+        <li class="nav-item">
+          <a href="#trafo" class="nav-link">Trafo</a>
+        </li>
+      </ul>
+    </nav>
+  </div> -->
+  <div class="container d-lg-none d-xl-none">
+    <div class="row">
+      <h1>SELAMAT DATANG</h1>
+      <h2>DI ULPLTD KOTAMOBAGU</h2>
+      <h4>Kapasitas 8000 kW</h4>
+    </div>
+    <div class="row">
+      <a href="" class="btn">Company Profile</a>
+      <a href="" class="btn">Safety Induction</a>
+    </div>
+    <div class="row">
+      <div class="card">
+        <h2>TAMU WAJIB</h2>
+        <div class="card border">
+          <p>MENGGUNAKAN ALAT PELINDUNG DIRI (APD) YANG TELAH DITETAPKAN PADA LOKASI KERJA DAN JENIS PEKERJAAN</p>
+        </div>
+        <div class="card border">
+          <p>SELALU DIDAMPINGI PEMANDU/PENGAWAS DARI PT PLN (PERSERO) ULPLTD KOTAMOBAGU DAN MENTAATI RAMBU-RAMBU KESELAMATAN YANG TERSEDIA</p>
+        </div>
+        <div class="card border">
+          <p>MENGGUNAKAN PAKAIAN YANG SOPAN DAN AMAN DISETIAP LOKASI KERJA</p>
+        </div>
+        <div class="card border">
+          <p>BILA TERJADI KEADAAN DARURAT SEGERA MENUJU TEMPAT BERKUMPUL (ASSEMBLY POINT) YANG TELAH DITENTUKAN</p>
+        </div>
+      </div>
+    </div>
+    <div class="row logo">
+      <img src="{{ url_for('static', filename='img/logopln.png' ) }}" class="img-fluid logopln" alt="" />
+      <img src="{{ url_for('static', filename='img/hsse.png' ) }}" class="img-fluid hsse" alt="" />
+    </div>
+  </div>
+</section>
+{% endblock %}
