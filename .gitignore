@@ -1,6 +1,4 @@
 /env
 app.db
 /app/static/upload
-__pycache__
-app/__pycache__
-app/models/__pycache__
+**/__pycache__/
