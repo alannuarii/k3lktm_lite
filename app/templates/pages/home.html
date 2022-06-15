@@ -9,7 +9,7 @@
       <h4>Kapasitas 8000 kW</h4>
       <div class="mt-4">
         <a href="https://pltdktm.daengveloper.com/" target="_blank" class="btn me-2">Company Profile</a>
-        <a href="https://pltdktm.daengveloper.com/" class="btn ms-2">Safety Induction</a>
+        <a href="{{ url_for('safety_induction' ) }}" class="btn ms-2">Safety Induction</a>
       </div>
     </div>
     <div class="position-absolute bottom-0 start-50 translate-middle-x mb-3">
@@ -23,7 +23,7 @@
       <h2>B E R S I H</h2>
       <p>Bangga Efisien Ramah Safety Integritas Handal</p>
     </div>
-    <div class="ip mt-2"><p>Your IP Address: {{ip}}</p></div>
+    <div class="ip mt-2"><p>Your IP Address: {{ip}} | Today: {{today}}</p></div>
   </div>
 </section>
 {% endblock %}

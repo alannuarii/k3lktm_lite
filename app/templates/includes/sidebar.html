@@ -8,10 +8,10 @@
         <a href="{{ url_for('guestbook' ) }}" class="nav-link {{active_guestbook}}"><i class="bi-book"></i> <span>Guest Book</span></a>
       </li>
       <li>
-        <a href="" class="nav-link"><i class="bi-shield-check"></i> <span>Working Permit</span></a>
+        <a href="{{ url_for('working_permit' ) }}" class="nav-link {{active_wp}}"><i class="bi-shield-check"></i> <span>Working Permit</span></a>
       </li>
       <li>
-        <a href="" class="nav-link"><i class="bi-camera-reels"></i> <span>Safety Induction</span></a>
+        <a href="{{ url_for('safety_induction' ) }}" class="nav-link {{active_si}}"><i class="bi-camera-reels"></i> <span>Safety Induction</span></a>
       </li>
       <li>
         <a href="{{ url_for('logbook' ) }}" class="nav-link {{active_logbook}}"><i class="bi-calendar2-check"></i> <span>LogBook</span></a>

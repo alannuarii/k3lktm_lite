@@ -25,7 +25,9 @@ import socket
 def index():
     hostname = socket.gethostname()
     ip = str(socket.gethostbyname(hostname))
-    return render_template('pages/home.html', title='Home | K3L KTM', active_home='active', ip = ip)
+    today = datetime.now().strftime('%A, %d %B %Y')
+    print(today)
+    return render_template('pages/home.html', title='Home | K3L KTM', active_home='active', ip = ip, today=today)
 
 
 @app.route('/lb3-converter')
@@ -270,8 +272,19 @@ def guestbook():
     return render_template('pages/guestbook.html',title='Guest Book | K3L KTM', active_guestbook='active', guests=list_guestbook)
 
 
+@app.route('/working-permit')
+def working_permit():
+    return render_template('pages/working-permit.html',title='Working Permit | K3L KTM', active_wp='active')
+
+
+@app.route('/safety-induction')
+def safety_induction():
+    return render_template('pages/safety-induction.html',title='Safety Induction | K3L KTM', active_si='active')
+
+
 # Halaman Mobile 
 @app.route('/m-home')
 def m_home():
-    
     return render_template('pages/m-home.html',title='Home | K3L KTM')
+
+
