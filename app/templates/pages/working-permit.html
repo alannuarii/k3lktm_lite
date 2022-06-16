@@ -8,31 +8,31 @@
         <div class="card">
           <div class="mb-3">
             <h1>WORKING PERMIT</h1>
-            <h3>(IJIN KERJA)</h3>
+            <h3>(IZIN KERJA)</h3>
           </div>
-          <form action="">
+          <form action="" method="post">
             <div class="card border mb-3">
               <h6 class="text-start mb-3">INFORMASI PEKERJAAN</h6>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Tanggal Pengajuan</span>
-                <input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
+                <input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="tanggal" />
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Jenis Pekerjaan</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="jenis_pekerjaan" />
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Detail Pekerjaan</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="detail_pekerjaan" />
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Lokasi Pekerjaan</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="lokasi" />
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text">Pengawas Pekerjaan</span>
-                <input type="text" aria-label="First name" class="form-control" placeholder="Nama Pengawas" />
-                <input type="text" aria-label="Last name" class="form-control" placeholder="Nomor Telepon" />
+                <input type="text" aria-label="First name" class="form-control" placeholder="Nama Pengawas" name="nama_pengawas_pekerjaas" />
+                <input type="text" aria-label="Last name" class="form-control" placeholder="Nomor Telepon" name="nomor_pengawas_pekerjaan" />
               </div>
               <div class="input-group">
                 <span class="input-group-text">Pengawas K3</span>
@@ -44,13 +44,13 @@
               <h6 class="text-start mb-3">DURASI PEKERJAAN</h6>
               <div class="input-group mb-3">
                 <span class="input-group-text">Tanggal Mulai & Selesai</span>
-                <input type="date" aria-label="First name" class="form-control" />
-                <input type="date" aria-label="Last name" class="form-control" />
+                <input type="date" aria-label="First name" class="form-control" name="tanggal_mulai" />
+                <input type="date" aria-label="Last name" class="form-control" name="tanggal_selesai" />
               </div>
               <div class="input-group">
                 <span class="input-group-text">Jam Mulai & Selesai</span>
-                <input type="time" aria-label="First name" class="form-control" />
-                <input type="time" aria-label="Last name" class="form-control" />
+                <input type="time" aria-label="First name" class="form-control" name="jam_mulai" />
+                <input type="time" aria-label="Last name" class="form-control" name="jam_selesai" />
               </div>
             </div>
             <div class="card border mb-3">
@@ -58,67 +58,67 @@
               <div class="row text-start">
                 <div class="col-4">
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Kelistrikan" id="flexCheckDefault" name="klasifikasi" />
                     <label class="form-check-label" for="flexCheckDefault"> Kelistrikan </label>
                   </div>
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Instrumentasi" id="flexCheckDefault" name="klasifikasi" />
                     <label class="form-check-label" for="flexCheckDefault"> Instrumentasi </label>
                   </div>
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Pipanisasi" id="flexCheckDefault" name="klasifikasi" />
                     <label class="form-check-label" for="flexCheckDefault"> Pipanisasi </label>
                   </div>
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Pengelasan" id="flexCheckDefault" name="klasifikasi" />
                     <label class="form-check-label" for="flexCheckDefault"> Pengelasan </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Konstruksi" id="flexCheckDefault" name="klasifikasi" />
                     <label class="form-check-label" for="flexCheckDefault"> Konstruksi </label>
                   </div>
                 </div>
                 <div class="col-4">
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Pengecetan" id="flexCheckDefault" name="klasifikasi" />
                     <label class="form-check-label" for="flexCheckDefault"> Pengecetan </label>
                   </div>
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Isolasi" id="flexCheckDefault" name="klasifikasi" />
                     <label class="form-check-label" for="flexCheckDefault"> Isolasi </label>
                   </div>
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Penyetelan" id="flexCheckDefault" name="klasifikasi" />
                     <label class="form-check-label" for="flexCheckDefault"> Penyetelan </label>
                   </div>
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Perakitan" id="flexCheckDefault" name="klasifikasi" />
                     <label class="form-check-label" for="flexCheckDefault"> Perakitan </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Pekerjaan PVC" id="flexCheckDefault" name="klasifikasi" />
                     <label class="form-check-label" for="flexCheckDefault"> Pekerjaan PVC </label>
                   </div>
                 </div>
                 <div class="col-4">
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Pemeriksaan / Inspeksi" id="flexCheckDefault" name="klasifikasi" />
                     <label class="form-check-label" for="flexCheckDefault"> Pemeriksaan / Inspeksi </label>
                   </div>
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Pekerjaan di Tempat Tertutup" id="flexCheckDefault" name="klasifikasi" />
                     <label class="form-check-label" for="flexCheckDefault"> Pekerjaan di Tempat Tertutup </label>
                   </div>
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Pemasangan" id="flexCheckDefault" name="klasifikasi" />
                     <label class="form-check-label" for="flexCheckDefault"> Pemasangan </label>
                   </div>
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Penggalian" id="flexCheckDefault" name="klasifikasi" />
                     <label class="form-check-label" for="flexCheckDefault"> Penggalian </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Pabrikasi" id="flexCheckDefault" name="klasifikasi" />
                     <label class="form-check-label" for="flexCheckDefault"> Pabrikasi </label>
                   </div>
                 </div>
@@ -129,47 +129,47 @@
               <div class="row text-start">
                 <div class="col-4">
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Ledakan" id="flexCheckDefault" name="prosedur" />
                     <label class="form-check-label" for="flexCheckDefault"> Ledakan </label>
                   </div>
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Kebakaran" id="flexCheckDefault" name="prosedur" />
                     <label class="form-check-label" for="flexCheckDefault"> Kebakaran </label>
                   </div>
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Radioaktif" id="flexCheckDefault" name="prosedur" />
                     <label class="form-check-label" for="flexCheckDefault"> Radioaktif </label>
                   </div>
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="H2S" id="flexCheckDefault" name="prosedur" />
                     <label class="form-check-label" for="flexCheckDefault"> H2S </label>
                   </div>
                 </div>
                 <div class="col-4">
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Listrik" id="flexCheckDefault" name="prosedur" />
                     <label class="form-check-label" for="flexCheckDefault"> Listrik </label>
                   </div>
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Mekanik" id="flexCheckDefault" name="prosedur" />
                     <label class="form-check-label" for="flexCheckDefault"> Mekanik </label>
                   </div>
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Ketinggian" id="flexCheckDefault" name="prosedur" />
                     <label class="form-check-label" for="flexCheckDefault"> Ketinggian </label>
                   </div>
                 </div>
                 <div class="col-4">
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Kebisingan" id="flexCheckDefault" name="prosedur" />
                     <label class="form-check-label" for="flexCheckDefault"> Kebisingan </label>
                   </div>
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Panas" id="flexCheckDefault" name="prosedur" />
                     <label class="form-check-label" for="flexCheckDefault"> Panas </label>
                   </div>
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Tekanan" id="flexCheckDefault" name="prosedur" />
                     <label class="form-check-label" for="flexCheckDefault"> Tekanan </label>
                   </div>
                 </div>
@@ -180,21 +180,21 @@
               <div class="row text-start">
                 <div class="col-6">
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Identifikasi Bahaya, Penilaian dan Pengendalian Resiko (HIRARC)" id="flexCheckDefault" />
                     <label class="form-check-label" for="flexCheckDefault"> Identifikasi Bahaya, Penilaian dan Pengendalian Resiko (HIRARC) </label>
                   </div>
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Job Safety Analysis (JSA)" id="flexCheckDefault" />
                     <label class="form-check-label" for="flexCheckDefault"> Job Safety Analysis (JSA) </label>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Prosedur Kerja" id="flexCheckDefault" />
                     <label class="form-check-label" for="flexCheckDefault"> Prosedur Kerja </label>
                   </div>
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <input class="form-check-input" type="checkbox" value="Sertifikat Kompetensi Kerja" id="flexCheckDefault" />
                     <label class="form-check-label" for="flexCheckDefault"> Sertifikat Kompetensi Kerja </label>
                   </div>
                 </div>
