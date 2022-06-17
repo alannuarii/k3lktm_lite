@@ -31,7 +31,7 @@
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text">Pengawas Pekerjaan</span>
-                <input type="text" aria-label="First name" class="form-control" placeholder="Nama Pengawas" name="nama_pengawas_pekerjaas" />
+                <input type="text" aria-label="First name" class="form-control" placeholder="Nama Pengawas" name="nama_pengawas_pekerjaan" />
                 <input type="text" aria-label="Last name" class="form-control" placeholder="Nomor Telepon" name="nomor_pengawas_pekerjaan" />
               </div>
               <div class="input-group">
@@ -73,9 +73,14 @@
                     <input class="form-check-input" type="checkbox" value="Pengelasan" id="flexCheckDefault" name="klasifikasi" />
                     <label class="form-check-label" for="flexCheckDefault"> Pengelasan </label>
                   </div>
-                  <div class="form-check">
+                  <div class="form-check mb-3">
                     <input class="form-check-input" type="checkbox" value="Konstruksi" id="flexCheckDefault" name="klasifikasi" />
                     <label class="form-check-label" for="flexCheckDefault"> Konstruksi </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input other-klasifikasi" type="checkbox" id="flexCheckDefault" name="klasifikasi" value="" onclick="klikKlasifikasi()" />
+                    <label class="form-check-label label-klasifikasi" for="flexCheckDefault"> Lain-lain </label>
+                    <div class="klasifikasi-in"></div>
                   </div>
                 </div>
                 <div class="col-4">
@@ -158,6 +163,11 @@
                     <input class="form-check-input" type="checkbox" value="Ketinggian" id="flexCheckDefault" name="prosedur" />
                     <label class="form-check-label" for="flexCheckDefault"> Ketinggian </label>
                   </div>
+                  <div class="form-check">
+                    <input class="form-check-input other-prosedur" type="checkbox" id="flexCheckDefault" name="prosedur" value="" onclick="klikProsedur()" />
+                    <label class="form-check-label label-prosedur" for="flexCheckDefault"> Lain-lain </label>
+                    <div class="prosedur-in"></div>
+                  </div>
                 </div>
                 <div class="col-4">
                   <div class="form-check mb-3">
@@ -175,13 +185,14 @@
                 </div>
               </div>
             </div>
-            <div class="card border mb-4">
+            <!-- <div class="card border mb-4">
               <h6 class="text-start mb-3">LAMPIRAN IZIN KERJA</h6>
               <div class="row text-start">
                 <div class="col-6">
                   <div class="form-check mb-3">
                     <input class="form-check-input" type="checkbox" value="Identifikasi Bahaya, Penilaian dan Pengendalian Resiko (HIRARC)" id="flexCheckDefault" />
                     <label class="form-check-label" for="flexCheckDefault"> Identifikasi Bahaya, Penilaian dan Pengendalian Resiko (HIRARC) </label>
+                    <div><input type="file" class="form-control form-control-sm input-klasifikasi" id="flexCheckDefault" /></div>
                   </div>
                   <div class="form-check mb-3">
                     <input class="form-check-input" type="checkbox" value="Job Safety Analysis (JSA)" id="flexCheckDefault" />
@@ -199,7 +210,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div>
               <input type="submit" class="btn submit" value="Submit" />
               <input type="reset" class="btn reset" value="Reset" />
@@ -209,5 +220,33 @@
       </div>
     </div>
   </div>
+  <script>
+    const otherKlasifikasi = document.querySelector(".other-klasifikasi").checked;
+    const labelKlasifikasi = document.querySelector(".label-klasifikasi");
+    const inKlasifikasi = document.querySelector(".klasifikasi-in");
+    const otherProsedur = document.querySelector(".other-prosedur").checked;
+    const labelProsedur = document.querySelector(".label-prosedur");
+    const inProsedur = document.querySelector(".prosedur-in");
+
+    function klikKlasifikasi() {
+      if (otherKlasifikasi != true) {
+        inKlasifikasi.innerHTML = `<input type="text" class="form-control form-control-sm input-klasifikasi" id="flexCheckDefault" value="" />`;
+        labelKlasifikasi.style.display = "none";
+        document.querySelector(".input-klasifikasi").onchange = function klasifikasi() {
+          document.querySelector(".other-klasifikasi").value = document.querySelector(".input-klasifikasi").value;
+        };
+      }
+    }
+
+    function klikProsedur() {
+      if (otherProsedur != true) {
+        inProsedur.innerHTML = `<input type="text" class="form-control form-control-sm input-prosedur" id="flexCheckDefault" value="" />`;
+        labelProsedur.style.display = "none";
+        document.querySelector(".input-prosedur").onchange = function prosedur() {
+          document.querySelector(".other-prosedur").value = document.querySelector(".input-prosedur").value;
+        };
+      }
+    }
+  </script>
 </section>
 {% endblock %}

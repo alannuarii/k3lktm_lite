@@ -580,13 +580,10 @@ td {
   color: var(--color-btn2);
   font-weight: 700;
 }
-.safety-induction .card {
-  padding: 30px;
+.safety-induction video {
+  padding: 10px;
   border-radius: 50px;
   border-bottom: 10px solid var(--color-btn2);
-}
-.safety-induction .card iframe {
-  margin: 0 auto;
 }
 
 /* Mobile Home */

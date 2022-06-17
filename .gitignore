@@ -1,5 +1,6 @@
 /env
 app.db
 /app/static/upload
+/app/static/video/safety_induction.mp4
 
 

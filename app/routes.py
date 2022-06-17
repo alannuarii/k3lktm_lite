@@ -12,12 +12,13 @@ from app.models.ph_proses import PHProses
 from app.models.debit_domestik import DebitDomestik
 from app.models.ph_domestik import PHDomestik
 from app.models.guestbook import Guestbook
-import os
-import base64
+from app.models.working_permit import WorkingPermit
 from PIL import Image
 from io import BytesIO
 from werkzeug.utils import secure_filename
 from googletrans import Translator
+import os
+import base64
 import socket
 
 
@@ -272,8 +273,25 @@ def guestbook():
     return render_template('pages/guestbook.html',title='Guest Book | K3L KTM', active_guestbook='active', guests=list_guestbook)
 
 
-@app.route('/working-permit')
+@app.route('/working-permit', methods=['GET','POST'])
 def working_permit():
+    if request.method == 'POST':
+        tanggal = request.form['tanggal']
+        jenis_pekerjaan = request.form['jenis_pekerjaan']
+        detail_pekerjaan = request.form['detail_pekerjaan']
+        lokasi = request.form['lokasi']
+        nama_pengawas_pekerjaan = request.form['nama_pengawas_pekerjaan']
+        nomor_pengawas_pekerjaan = request.form['nomor_pengawas_pekerjaan']
+        tanggal_mulai = request.form['tanggal_mulai']
+        tanggal_selesai = request.form['tanggal_selesai']
+        jam_mulai = request.form['jam_mulai']
+        jam_selesai = request.form['jam_selesai']
+        klasifikasi = str(request.form.getlist('klasifikasi'))
+        prosedur = str(request.form.getlist('prosedur'))
+        workingpermit = WorkingPermit(tanggal=tanggal, jenis_pekerjaan=jenis_pekerjaan, detail_pekerjaan=detail_pekerjaan, lokasi=lokasi, nama_pengawas_pekerjaan=nama_pengawas_pekerjaan, nomor_pengawas_pekerjaan=nomor_pengawas_pekerjaan, tanggal_mulai=tanggal_mulai, tanggal_selesai=tanggal_selesai, jam_mulai=jam_mulai, jam_selesai=jam_selesai, klasifikasi=klasifikasi, prosedur=prosedur)
+        db.session.add(workingpermit)
+        db.session.commit()
+        return redirect(url_for('index'))
     return render_template('pages/working-permit.html',title='Working Permit | K3L KTM', active_wp='active')
 
 
