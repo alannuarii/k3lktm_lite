@@ -19,7 +19,7 @@
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Jenis Pekerjaan</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="jenis_pekerjaan" />
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="jenis_pekerjaan" required />
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Detail Pekerjaan</span>
@@ -185,14 +185,87 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="card border mb-4">
+            <div class="card border mb-4">
               <h6 class="text-start mb-3">LAMPIRAN IZIN KERJA</h6>
               <div class="row text-start">
                 <div class="col-6">
                   <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="Identifikasi Bahaya, Penilaian dan Pengendalian Resiko (HIRARC)" id="flexCheckDefault" />
+                    <input class="form-check-input hirarc-check" type="checkbox" value="Identifikasi Bahaya, Penilaian dan Pengendalian Resiko (HIRARC)" id="flexCheckDefault" data-bs-toggle="modal" data-bs-target="#exampleModal" />
                     <label class="form-check-label" for="flexCheckDefault"> Identifikasi Bahaya, Penilaian dan Pengendalian Resiko (HIRARC) </label>
-                    <div><input type="file" class="form-control form-control-sm input-klasifikasi" id="flexCheckDefault" /></div>
+
+                    <!-- Modal HIRARC-->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Identifikasi Bahaya, Penilaian dan Pengendalian Resiko (HIRARC)</h5>
+                            <button type="button" class="btn-close hirarc-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <form action="" method="post">
+                              <div class="row">
+                                <div class="col-8">
+                                  <div class="input-group input-group-sm mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Nama Unit</span>
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="ULPLTD Kotamobagu" disabled />
+                                  </div>
+                                  <div class="input-group input-group-sm mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Bidang</span>
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="bidang" />
+                                  </div>
+                                  <div class="input-group input-group-sm mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Jenis Pekerjaan</span>
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="jenis_pekerjaan" disabled />
+                                  </div>
+                                  <div class="input-group input-group-sm mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Lokasi Pekerjaan</span>
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="lokasi" disabled />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row mt-3">
+                                <table class="table table-bordered">
+                                  <thead class="text-center">
+                                    <tr>
+                                      <th scope="col">Kegiatan</th>
+                                      <th scope="col">Potensi Bahaya</th>
+                                      <th scope="col">Risiko</th>
+                                      <th scope="col">Konsekuensi</th>
+                                      <th scope="col">Kemungkinan</th>
+                                      <th scope="col">Tingkat Risiko</th>
+                                      <th scope="col">Pengendalian Risiko</th>
+                                      <th scope="col">Konsekuensi</th>
+                                      <th scope="col">Kemungkinan</th>
+                                      <th scope="col">Tingkat Risiko</th>
+                                      <th scope="col">Penanggung Jawab</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td><input class="form-control form-control-sm" type="text" /></td>
+                                      <td><input class="form-control form-control-sm" type="text" /></td>
+                                      <td><input class="form-control form-control-sm" type="text" /></td>
+                                      <td class="text-center"><input class="form-control form-control-sm" type="text" /></td>
+                                      <td class="text-center"><input class="form-control form-control-sm" type="text" /></td>
+                                      <td class="text-center"><input class="form-control form-control-sm" type="text" /></td>
+                                      <td><input class="form-control form-control-sm" type="text" /></td>
+                                      <td class="text-center"><input class="form-control form-control-sm" type="text" /></td>
+                                      <td class="text-center"><input class="form-control form-control-sm" type="text" /></td>
+                                      <td class="text-center"><input class="form-control form-control-sm" type="text" /></td>
+                                      <td><input class="form-control form-control-sm" type="text" /></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <input type="submit" class="btn submit" value="Submit" />
+                            <input type="reset" class="btn reset" value="Reset" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div class="form-check mb-3">
                     <input class="form-check-input" type="checkbox" value="Job Safety Analysis (JSA)" id="flexCheckDefault" />
@@ -210,7 +283,7 @@
                   </div>
                 </div>
               </div>
-            </div> -->
+            </div>
             <div>
               <input type="submit" class="btn submit" value="Submit" />
               <input type="reset" class="btn reset" value="Reset" />
@@ -227,6 +300,7 @@
     const otherProsedur = document.querySelector(".other-prosedur").checked;
     const labelProsedur = document.querySelector(".label-prosedur");
     const inProsedur = document.querySelector(".prosedur-in");
+    const hirarcClose = document.querySelector(".hirarc-close");
 
     function klikKlasifikasi() {
       if (otherKlasifikasi != true) {
@@ -247,6 +321,10 @@
         };
       }
     }
+
+    hirarcClose.addEventListener("click", () => {
+      document.querySelector(".hirarc-check").checked = false;
+    });
   </script>
 </section>
 {% endblock %}

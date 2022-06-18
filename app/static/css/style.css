@@ -570,6 +570,17 @@ td {
 .wp .card .reset:hover {
   background-color: var(--color-text2);
 }
+.wp .modal-content {
+  padding: 10px 30px;
+  border-radius: 50px;
+}
+.wp .modal h5 {
+  color: var(--color-text2);
+}
+.wp .modal table th,
+.wp .modal table td {
+  font-size: 10px;
+}
 
 /* Safety Induction */
 .safety-induction {
