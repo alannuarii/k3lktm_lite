@@ -1,7 +1,7 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from app import app
 from app import db
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash
 from app.models.lb3 import LB3
 from app.models.sludge import Sludge
 from app.models.oli_bekas import OliBekas
@@ -13,25 +13,73 @@ from app.models.debit_domestik import DebitDomestik
 from app.models.ph_domestik import PHDomestik
 from app.models.guestbook import Guestbook
 from app.models.working_permit import WorkingPermit
+from app.models.user import User
 from PIL import Image
 from io import BytesIO
 from werkzeug.utils import secure_filename
+from werkzeug.urls import url_parse
 from googletrans import Translator
+from flask_login import current_user, login_user, logout_user, login_required
 import os
 import base64
 import socket
 
 
+@app.route('/login', methods=['GET','POST'])
+def login():
+    tahun = datetime.now().strftime('%Y')
+
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+
+    if request.method=='POST':
+        email = request.form['email']
+        password = request.form['password']
+        user = User.query.filter_by(email=email).first()
+
+        if not user:
+            flash('Anda memasukkan email yang salah')
+            return redirect(url_for('login'))
+        if not user.checkPassword(password):
+            flash('Anda memasukkan password yang salah')
+            return redirect(url_for('login'))
+
+        login_user(user)
+        next_page = request.args.get('next')
+        if not next_page or url_parse(next_page).netloc != '':
+            next_page = url_for('index')
+        return redirect(next_page)
+
+    return render_template('pages/login.html', title='Login | K3L KTM', tahun=tahun)
+
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
+
+
 @app.route('/')
+@login_required
 def index():
     hostname = socket.gethostname()
     ip = str(socket.gethostbyname(hostname))
     today = datetime.now().strftime('%A, %d %B %Y')
-    print(today)
-    return render_template('pages/home.html', title='Home | K3L KTM', active_home='active', ip = ip, today=today)
+    today_1 = datetime.now().strftime('%d %B %Y')
+    guests = Guestbook.query.filter(Guestbook.tanggal.like(today_1+'%')).all()
+    # name = 'Aurelia Bilqis Azzahra'
+    # email = 'aura@alan.web.id'
+    # password = 'admin'
+    # level = 2
+    # admin = User(name=name, email=email, level=level)
+    # admin.setPassword(password)
+    # db.session.add(admin)
+    # db.session.commit()
+    return render_template('pages/home.html', title='Home | K3L KTM', active_home='active', ip = ip, today=today, guests=guests, today_1=today_1)
 
 
 @app.route('/lb3-converter')
+@login_required
 def lb3():
     list_lb3 = LB3.query.all()
     list_nilai_satuan = []
@@ -44,12 +92,14 @@ def lb3():
 
 
 @app.route('/logbook')
+@login_required
 def logbook():
 
     return render_template('pages/logbook.html', title='LogBook | K3L KTM', active_logbook='active')
 
 
 @app.route('/logbook/limbah-domestik/debit')
+@login_required
 def debit_domestik():
     query = request.args.get('bulan')
     debit = DebitDomestik.query.filter_by(bulan=query).all()
@@ -63,6 +113,7 @@ def debit_domestik():
 
 
 @app.route('/logbook/limbah-domestik/ph')
+@login_required
 def ph_domestik():
     query = request.args.get('bulan')
     ph = PHDomestik.query.filter_by(bulan=query).all()
@@ -76,6 +127,7 @@ def ph_domestik():
 
 
 @app.route('/logbook/limbah-proses/debit')
+@login_required
 def debit_proses():
     query = request.args.get('bulan')
     debit = DebitProses.query.filter_by(bulan=query).all()
@@ -89,6 +141,7 @@ def debit_proses():
 
 
 @app.route('/logbook/limbah-proses/ph')
+@login_required
 def ph_proses():
     query = request.args.get('bulan')
     ph = PHProses.query.filter_by(bulan=query).all()
@@ -102,6 +155,7 @@ def ph_proses():
 
 
 @app.route('/logbook/input-ppa', methods=['GET', 'POST'])
+@login_required
 def input_ppa():
     if request.method == 'POST':
         if request.form['ppa'] == 'debitproses':
@@ -140,6 +194,7 @@ def input_ppa():
 
 
 @app.route('/logbook/sludge', methods=['GET', 'POST'])
+@login_required
 def sludge():
     list_sludge = Sludge.query.all()
     if request.method == 'POST':
@@ -165,6 +220,7 @@ def sludge():
 
 
 @app.route('/logbook/oli-bekas', methods=['GET', 'POST'])
+@login_required
 def oli_bekas():
     list_oli_bekas = OliBekas.query.all()
     if request.method == 'POST':
@@ -190,6 +246,7 @@ def oli_bekas():
 
 
 @app.route('/logbook/filter-bekas', methods=['GET', 'POST'])
+@login_required
 def filter_bekas():
     list_filter_bekas = FilterBekas.query.all()
     if request.method == 'POST':
@@ -215,6 +272,7 @@ def filter_bekas():
 
 
 @app.route('/logbook/majun-bekas', methods=['GET', 'POST'])
+@login_required
 def majun_bekas():
     list_majun_bekas = MajunBekas.query.all()
     if request.method == 'POST':
@@ -268,12 +326,14 @@ def input_tamu():
 
 
 @app.route('/guestbook')
+@login_required
 def guestbook():
     list_guestbook = Guestbook.query.all()
     return render_template('pages/guestbook.html',title='Guest Book | K3L KTM', active_guestbook='active', guests=list_guestbook)
 
 
 @app.route('/working-permit', methods=['GET','POST'])
+@login_required
 def working_permit():
     if request.method == 'POST':
         tanggal = request.form['tanggal']

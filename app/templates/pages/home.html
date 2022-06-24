@@ -24,6 +24,50 @@
       <p>Bangga Efisien Ramah Safety Integritas Handal</p>
     </div>
     <div class="ip mt-2"><p>Your IP Address: {{ip}} | Today: {{today}}</p></div>
+    {% if current_user.level == 1 %}
+    <div class="tamu">
+      <i class="bi-people-fill rounded-circle" data-bs-toggle="modal" data-bs-target="#modal-tamu"
+        ><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          {{guests|length}}
+          <span class="visually-hidden">unread messages</span>
+        </span></i
+      >
+    </div>
+    <!-- Modal Tamu-->
+    <div class="modal fade" id="modal-tamu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Daftar Kunjungan Hari ini ({{today_1}})</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body d-flex justify-content-center">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Nama</th>
+                  <th scope="col">Instansi</th>
+                  <th scope="col">Tujuan Berkunjung</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for guest in guests %}
+                <tr>
+                  <td>{{loop.index}}</td>
+                  <td class="text-start">{{guest.nama}}</td>
+                  <td class="text-start">{{guest.instansi}}</td>
+                  <td class="text-start">{{guest.tujuan}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Akhir Modal Tamu  -->
+    {% endif %}
   </div>
 </section>
 {% endblock %}

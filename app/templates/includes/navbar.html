@@ -6,10 +6,10 @@
     </button>
     <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi-person-circle me-2"></i>Alan Nuari</button>
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi-person-circle me-2"></i>{{current_user.name}}</button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li>
-            <a class="dropdown-item mt-3" href="#"><i class="bi-box-arrow-right"></i> Log Out</a>
+            <a class="dropdown-item" href="{{ url_for('logout' ) }}"><i class="bi-box-arrow-right"></i> Sign Out</a>
           </li>
         </ul>
       </div>

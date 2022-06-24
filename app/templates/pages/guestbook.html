@@ -4,7 +4,7 @@
 <section id="guestbook" class="guestbook">
   <div class="container">
     <div class="row">
-      <h1 class="text-center">GUEST BOOK</h1>
+      <h1 class="text-center">DAFTAR TAMU</h1>
       <div class="col-lg-12">
         <div class="card">
           <table class="table table-bordered text-center">
@@ -25,11 +25,11 @@
               <tr>
                 <td>{{loop.index}}</td>
                 <td>{{guest.tanggal}}</td>
-                <td>{{guest.nama}}</td>
-                <td>{{guest.instansi}}</td>
-                <td>{{guest.alamat}}</td>
+                <td class="text-start">{{guest.nama}}</td>
+                <td class="text-start">{{guest.instansi}}</td>
+                <td class="text-start">{{guest.alamat}}</td>
                 <td>{{guest.telepon}}</td>
-                <td>{{guest.tujuan}}</td>
+                <td class="text-start">{{guest.tujuan}}</td>
                 <td><i class="bi-file-person" data-bs-toggle="modal" data-bs-target="#modal{{guest.id}}"></i></td>
               </tr>
               <!-- Modal Foto-->
