@@ -13,6 +13,7 @@ from app.models.debit_domestik import DebitDomestik
 from app.models.ph_domestik import PHDomestik
 from app.models.guestbook import Guestbook
 from app.models.working_permit import WorkingPermit
+from app.models.absen import Absen
 from app.models.user import User
 from PIL import Image
 from io import BytesIO
@@ -358,6 +359,32 @@ def working_permit():
 @app.route('/safety-induction')
 def safety_induction():
     return render_template('pages/safety-induction.html',title='Safety Induction | K3L KTM', active_si='active')
+
+
+@app.route('/input-absen', methods=['GET','POST'])
+def input_absen():
+    if request.method == 'POST':
+        nama = request.form['nama']
+        instansi = request.form['instansi']
+        telepon = request.form['telepon']
+        foto = request.form['foto']
+        new_foto = foto.replace('data:image/jpeg;base64,', '')
+        bytes_decoded = base64.b64decode(new_foto)
+        img = Image.open(BytesIO(bytes_decoded))
+        out_jpg = img.convert("RGB")
+
+        # Random Name 
+        now = datetime.now()
+        microsecond = now.strftime('%f')  
+        filename = 'Absen-'+microsecond+'.jpg'
+
+
+        out_jpg.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        absen = Absen(nama=nama, instansi=instansi, telepon=telepon, foto=filename)
+        db.session.add(absen)
+        db.session.commit()
+        return redirect(url_for('m_home'))
+    return render_template('pages/input-absen.html',title='Daftar Hadir | K3L KTM')
 
 
 # Halaman Mobile 
